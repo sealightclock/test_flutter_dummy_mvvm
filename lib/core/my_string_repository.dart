@@ -1,4 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+
 import '../model/my_string_model.dart';
 
 class MyStringRepository {
@@ -13,5 +15,11 @@ class MyStringRepository {
     final prefs = await SharedPreferences.getInstance();
     String value = prefs.getString(_key) ?? "Default Value";
     return MyStringModel(value);
+  }
+
+  Future<MyStringModel> fetchFromServer() async {
+    await Future.delayed(Duration(seconds: 2)); // Simulating network delay
+    String fetchedValue = "Server Value ${DateTime.now().millisecondsSinceEpoch}";
+    return MyStringModel(fetchedValue);
   }
 }

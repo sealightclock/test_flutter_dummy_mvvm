@@ -38,6 +38,13 @@ class MyHomeScreen extends StatelessWidget {
                 },
                 child: Text('Update Value'),
               ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  viewModel.fetchFromServer();
+                },
+                child: Text('Update from Server'),
+              ),
             ],
           ),
         ),

@@ -22,4 +22,10 @@ class MyStringViewModel extends ChangeNotifier {
     await _repository.saveString(newValue);
     notifyListeners();
   }
+
+  Future<void> fetchFromServer() async {
+    _myString = await _repository.fetchFromServer();
+    await _repository.saveString(_myString.value); // Persist fetched value
+    notifyListeners();
+  }
 }
